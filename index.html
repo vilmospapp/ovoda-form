@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Szülői igazolás</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="form-container">
+
+    <h1 class="center">OVIKRÉTA</h1>
+    <h2 class="center underline">SZÜLŐI IGAZOLÁS</h2>
+
+    <div class="spacer"></div>
+
+    <input id="ovoda" class="line-input-head" placeholder="Óvoda neve">
+    <div class="small">óvoda neve</div>
+
+    <p>
+        Alulírott szülő (gondviselő, gyám) ezúton igazolom, hogy gyermekem:
+    
+
+    <input id="gyermek" class="line-input" placeholder="Gyermek neve">
+
+    
+        az alábbi időszakban hiányzott az óvodából:
+    </p>
+
+    <div class="date-line">
+        <input class="short"> év
+        <input class="short"> hó
+        <input class="short"> napjától-
+    
+
+    
+        <input class="short"> hó
+        <input class="short"> napjáig
+    </div>
+
+    <p>
+        Budapest, <input class="short" placeholder="Dátum">
+    </p>
+
+    <div class="signature-block">
+        <input id="alairas" class="signature line-input-signature">
+        <div class="small">Szülő (gondviselő, gyám) aláírása</div>
+    </div>
+    
+
+    <div class="buttons">
+        <button id="saveBtn">Mentés</button>
+        <button onclick="clearForm()">Űrlap törlése</button>
+        <button onclick="exportPNG()">Nyomtatás (PNG)</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
