@@ -39,6 +39,31 @@ function clearForm() {
 }
 
 function exportPNG() {
+
+    const inputs = container.querySelectorAll("input:not(#alairas)");
+    const replacements = [];
+
+    // Replace inputs with divs
+    inputs.forEach(input => {
+        const span = document.createElement("span");
+        span.className = "print-text";
+        span.textContent = input.value || " ";
+
+        // Copy size & alignment
+        const style = getComputedStyle(input);
+        span.style.display = style.display === "block" ? "block" : "inline-block";
+        span.style.width = style.width;
+        span.style.height = style.height;
+        span.style.textAlign = style.textAlign;
+        span.style.borderBottom = style.borderBottom;
+        span.style.padding = style.padding;
+        span.style.margin = style.margin;
+
+        input.style.display = "none";
+        input.parentNode.insertBefore(span, input);
+        replacements.push({ input, span });
+    });
+
     container.classList.add("hide-buttons");
 
     html2canvas(container).then(canvas => {
@@ -46,6 +71,15 @@ function exportPNG() {
         link.download = "ovodai_igazolas.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
+        //container.classList.remove("hide-buttons");
+    }).finally(() => {
+        console.log("Finally....");
+        // 🔁 ALWAYS restore original inputs
+        replacements.forEach(({ input, span }) => {
+            span.remove();
+            input.style.display = "";
+        });
+
         container.classList.remove("hide-buttons");
     });
 }

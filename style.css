@@ -92,7 +92,7 @@ input {
     font-size: 1.2em;
     height: 8mm;        /* IMPORTANT */
     padding-top: 4mm;   /* IMPORTANT */
-    padding-bottom: 2mm;
+    padding-bottom: 0mm;
     font-weight: normal;
     color: #0b2d6b;
 }
@@ -122,4 +122,10 @@ button {
 /* Hide buttons in PNG */
 .hide-buttons .buttons {
     display: none;
+}
+.print-text {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    white-space: pre-wrap;
 }
