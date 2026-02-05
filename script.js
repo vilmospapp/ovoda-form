@@ -39,7 +39,39 @@ function clearForm() {
 }
 
 function exportPNG() {
+    /* ----------------------------
+       1. VALIDATION
+    ----------------------------- */
+    const missing = [];
+    const requiredInputs = container.querySelectorAll("[data-required]");
 
+    requiredInputs.forEach(input => {
+        if (!input.value || !input.value.trim()) {
+            missing.push(input.dataset.label || "Ismeretlen mező");
+        }
+    });
+
+    if (missing.length > 0) {
+        alert(
+            "A nyomtatás nem lehetséges.\n\nHiányzó adatok:\n" +
+            missing.map(m => "– " + m).join("\n")
+        );
+        return; // 🚫 STOP export
+    }
+
+    /* ----------------------------
+       2. PREPARE FILENAME (DATE)
+    ----------------------------- */
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+
+    const fileName = `szuloi_igazolas_${yyyy}-${mm}-${dd}.png`;
+
+    /* ----------------------------
+       3. INPUT → SPAN REPLACEMENT
+    ----------------------------- */
     const inputs = container.querySelectorAll("input:not(#alairas)");
     const replacements = [];
 
@@ -66,9 +98,12 @@ function exportPNG() {
 
     container.classList.add("hide-buttons");
 
+    /* ----------------------------
+       4. CANVAS EXPORT
+    ----------------------------- */
     html2canvas(container).then(canvas => {
         const link = document.createElement("a");
-        link.download = "ovodai_igazolas.png";
+        link.download = fileName;
         link.href = canvas.toDataURL("image/png");
         link.click();
         //container.classList.remove("hide-buttons");

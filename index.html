@@ -20,36 +20,36 @@
 
     <div class="spacer"></div>
 
-    <input id="ovoda" class="line-input-head" placeholder="Óvoda neve">
+    <input id="ovoda" class="line-input-head"  data-required data-label="Óvoda neve" placeholder="Óvoda neve">
     <div class="small">óvoda neve</div>
 
     <p>
         Alulírott szülő (gondviselő, gyám) ezúton igazolom, hogy gyermekem:
     
 
-    <input id="gyermek" class="line-input" placeholder="Gyermek neve">
+    <input id="gyermek" class="line-input" data-required data-label="Gyermek neve" placeholder="Gyermek neve">
 
     
         az alábbi időszakban hiányzott az óvodából:
     </p>
 
     <div class="date-line">
-        <input class="short"> év
-        <input class="short"> hó
-        <input class="short"> napjától-
+        <input data-required data-label="Év" class="short"> év
+        <input data-required data-label="Hótól" class="short"> hó
+        <input data-required data-label="Naptól" class="short"> napjától-
     
 
     
-        <input class="short"> hó
-        <input class="short"> napjáig
+        <input data-required data-label="Hóig" class="short"> hó
+        <input data-required data-label="Napig" class="short"> napjáig
     </div>
 
     <p>
-        Budapest, <input class="short" placeholder="Dátum">
+        Budapest, <input data-required class="short" data-label="Dátum" placeholder="Dátum">
     </p>
 
     <div class="signature-block">
-        <input id="alairas" class="signature line-input-signature">
+        <input id="alairas" data-required data-label="Aláírás" class="signature line-input-signature">
         <div class="small">Szülő (gondviselő, gyám) aláírása</div>
     </div>
     
